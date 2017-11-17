@@ -16,6 +16,7 @@ const webpackBaseConf = require('./webpack.base.conf');
 
 module.exports = merge(webpackBaseConf, {
     plugins: [
+        // https://github.com/webpack-contrib/uglifyjs-webpack-plugin
         new UglifyJsPlugin({
             test: /\.js($|\?)/i,
         }),

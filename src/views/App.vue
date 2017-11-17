@@ -20,6 +20,9 @@
         methods: {
             testclick() {
                 this.title = (() => 5 + 6)();
+                console.log(123456);
+                console.error(123456);
+                debugger;
             },
         },
     };
