@@ -7,8 +7,9 @@ const pathConf = require('../configs/path.conf');
 // plugins
 // minify js
 // current webpack.optimize.UglifyJsPlugin cant support es6
-// see https://webpack.js.org/plugins/uglifyjs-webpack-plugin/
+// https://webpack.js.org/plugins/uglifyjs-webpack-plugin/
 const UglifyJsPlugin    = require('uglifyjs-webpack-plugin');
+// https://github.com/tcoopman/image-webpack-loader
 // auto create html
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 

@@ -6,7 +6,7 @@
     <div id="app">
         <h1>{{title}}</h1>
         <img src="../images/bird.jpg">
-        <button @click="testclick"></button>
+        <button @click="testclick">change</button>
     </div>
 </template>
 

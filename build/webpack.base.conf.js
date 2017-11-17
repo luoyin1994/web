@@ -40,12 +40,24 @@ module.exports = {
             // https://github.com/webpack-contrib/file-loader
             // load image
             {
-                test   : /\.(png|svg|jpg|gif)$/,
-                loader : 'file-loader',
-                options: {
-                    // extract image
-                    name: 'images/[name].[ext]?[hash:5]',
-                },
+                test: /\.(png|svg|jpg|gif)$/,
+                use : [
+                    {
+                        loader : 'file-loader',
+                        options: {
+                            // extract image
+                            name: 'images/[name].[ext]?[hash:5]',
+                        },
+                    },
+                    {
+                        // compress image
+                        // https://github.com/tcoopman/image-webpack-loader
+                        loader : 'image-webpack-loader',
+                        options: {
+                            bypassOnDebug: true,
+                        },
+                    },
+                ],
             },
             // load font
             {
