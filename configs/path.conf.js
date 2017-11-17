@@ -1,17 +1,19 @@
-const path = require('path');
+const r = require('path').resolve;
 
-const root = path.resolve(__dirname, '../');
+const root = r(__dirname, '../');
 
 // dev directory
-const src   = path.resolve(root, 'src');
-const views = path.resolve(root, src, 'views');
+const src    = r(root, 'src');
+const views  = r(root, src, 'views');
+const assets = r(src, 'assets');
 
 // prod directory
-const dist = path.resolve(root, 'dist');
+const dist = r(root, 'dist');
 
 module.exports = {
     root,
     src,
     views,
     dist,
+    assets,
 };

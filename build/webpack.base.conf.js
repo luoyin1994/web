@@ -2,7 +2,7 @@
 const webpack = require('webpack');
 
 // own module
-const pathConfig = require('../configs/path.conf');
+const pathConf = require('../configs/path.conf');
 
 // plugins
 // extract css
@@ -13,12 +13,12 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 
 module.exports = {
-    context: pathConfig.src,
+    context: pathConf.src,
     entry  : {
         main: './main.js',
     },
     output : {
-        path         : pathConfig.dist,
+        path         : pathConf.dist,
         filename     : '[name].js?[hash:5]',
         chunkFilename: '[name].js?[hash:5]',
     },
