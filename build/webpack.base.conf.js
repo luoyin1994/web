@@ -6,11 +6,13 @@ const pathConfig = require('../configs/path.conf');
 
 // plugins
 // extract css
-const ExtractTextPlugin  = require('extract-text-webpack-plugin');
+// https://github.com/webpack-contrib/extract-text-webpack-plugin
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // extract commonChunk
+// https://webpack.js.org/plugins/commons-chunk-plugin/
 const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
-// export webpack config
-module.exports           = {
+
+module.exports = {
     context: pathConfig.src,
     entry  : {
         main: './main.js',
@@ -26,7 +28,7 @@ module.exports           = {
                 test: /\.css$/,
                 use : ExtractTextPlugin.extract({
                     fallback  : 'style-loader',
-                    use       : 'css-loader',
+                    use       : ['vue-style-loader', 'css-loader'],
                     publicPath: '../',
                 }),
             },
@@ -34,6 +36,8 @@ module.exports           = {
                 test: /\.vue$/,
                 use : 'vue-loader',
             },
+            // file-loader
+            // https://github.com/webpack-contrib/file-loader
             // load image
             {
                 test   : /\.(png|svg|jpg|gif)$/,
