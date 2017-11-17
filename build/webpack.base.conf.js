@@ -49,14 +49,6 @@ module.exports = {
                             name: 'images/[name].[ext]?[hash:5]',
                         },
                     },
-                    {
-                        // compress image
-                        // https://github.com/tcoopman/image-webpack-loader
-                        loader : 'image-webpack-loader',
-                        options: {
-                            bypassOnDebug: true,
-                        },
-                    },
                 ],
             },
             // load font
