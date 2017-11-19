@@ -4,6 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
+    "dev": "webpack-dev-server --open --config ./build/webpack.dev.conf.js",
     "dist": "webpack --progress --display-error-details --hide-modules --config ./build/webpack.prod.conf.js"
   },
   "devDependencies": {
@@ -20,6 +21,7 @@
     "vue-style-loader": "^3.0.3",
     "vue-template-compiler": "^2.5.3",
     "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4",
     "webpack-merge": "^4.1.1"
   },
   "dependencies": {

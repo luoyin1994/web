@@ -9,11 +9,13 @@ const assets = r(src, 'assets');
 
 // prod directory
 const dist = r(root, 'dist');
+const dev  = r(root, 'dev');
 
 module.exports = {
     root,
     src,
     views,
     dist,
+    dev,
     assets,
 };
