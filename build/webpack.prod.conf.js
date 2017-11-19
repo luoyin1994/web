@@ -2,7 +2,7 @@
 const webpack         = require('webpack');
 const merge           = require('webpack-merge');
 // own module
-const pathConf        = require('../configs/path.conf');
+const pathConf        = require('./path.conf');
 const webpackBaseConf = require('./webpack.base.conf');
 
 // plugins

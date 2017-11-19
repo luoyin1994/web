@@ -2,7 +2,7 @@
 const webpack = require('webpack');
 
 // own module
-const pathConf = require('../configs/path.conf');
+const pathConf = require('./path.conf');
 
 // plugins
 // extract css
