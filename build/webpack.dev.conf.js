@@ -6,11 +6,18 @@ const pathConf        = require('./path.conf');
 const webpackBaseConf = require('./webpack.base.conf');
 const config          = require('./config');
 
-module.exports = merge(webpackBaseConf, {
-    devtool  : 'source-map',
+let webpackDevConf = merge(webpackBaseConf, {
+    devtool  : config.dev.sourceMap ? config.sourceMapType : false,
     devServer: {
         // https://doc.webpack-china.org/configuration/dev-server/#devserver
         contentBase: pathConf.dev,
         port       : config.dev.port,
     },
 });
+
+// whether need WebpackBundleAnalyzer
+if (config.dist.bundleAnalyzer.open) {
+    webpackDevConf.plugins.push(new WebpackBundleAnalyzer(config.dev.bundleAnalyzer.options));
+}
+
+module.exports = webpackDevConf;

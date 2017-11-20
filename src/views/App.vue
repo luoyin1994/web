@@ -7,6 +7,7 @@
         <h1>{{title}}</h1>
         <img src="../images/bird.jpg"> <img src="../assets/logo.png">
         <button @click="testclick">change</button>
+        <index></index>
     </div>
 </template>
 
@@ -17,10 +18,15 @@
                 title: 'title xxx',
             };
         },
-        methods: {
+        methods   : {
             testclick() {
+//                console.log(_);
+                import('lodash').then(_ => console.log(_));
                 this.title = (() => 5 + 6)();
             },
+        },
+        components: {
+            index: () => import(/* webpackChunkName: 'index.vue' */'./index/index.vue'),
         },
     };
 </script>

@@ -13,9 +13,12 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 // current webpack.optimize.UglifyJsPlugin cant support es6
 // https://webpack.js.org/plugins/uglifyjs-webpack-plugin/
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+// bundle Analysis
+// https://webpack.js.org/guides/code-splitting/#bundle-analysis
+const WebpackBundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-module.exports = merge(webpackBaseConf, {
-    devtool: config.dist.sourceMap ? 'source-map' : false,
+let webpackProdConf = merge(webpackBaseConf, {
+    devtool: config.dist.sourceMap ? config.sourceMapType : false,
     output : {
         path: pathConf.dist,
     },
@@ -24,17 +27,27 @@ module.exports = merge(webpackBaseConf, {
             // https://github.com/johnagan/clean-webpack-plugin#options-and-defaults-optional
             root: pathConf.root,
         }),
-        // https://doc.webpack-china.org/guides/production/
-        // https://vue-loader.vuejs.org/en/workflow/production.html
-        new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify('production'),
-            },
-        }),
         // https://github.com/webpack-contrib/uglifyjs-webpack-plugin
         new UglifyJsPlugin({
             test: /\.js($|\?)/i,
         }),
     ],
-})
-;
+});
+
+// define env production
+webpackProdConf.plugins.push(
+    // https://doc.webpack-china.org/guides/production/
+    // https://vue-loader.vuejs.org/en/workflow/production.html
+    new webpack.DefinePlugin({
+        'process.env': {
+            'NODE_ENV': JSON.stringify('production'),
+        },
+    }),
+);
+
+// whether need WebpackBundleAnalyzer
+if (config.dist.bundleAnalyzer.open) {
+    webpackProdConf.plugins.push(new WebpackBundleAnalyzer(config.dist.bundleAnalyzer.options));
+}
+
+module.exports = webpackProdConf;

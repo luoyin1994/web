@@ -25,7 +25,11 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
     context: pathConf.src,
     entry  : {
-        main: './main.js',
+        main     : './main.js',
+        // vendors
+        lodash   : 'lodash',
+        vue      : 'vue',
+        vuexRoute: ['vuex', 'vue-route'],
     },
     output : {
         filename     : '[name].js?[hash:5]',
@@ -34,16 +38,20 @@ module.exports = {
     module : {
         rules: [
             {
-                test: /\.css$/,
-                use : ExtractTextPlugin.extract({
-                    fallback  : 'style-loader',
-                    use       : ['vue-style-loader', 'css-loader'],
-                    publicPath: '../',
-                }),
-            },
-            {
-                test: /\.vue$/,
-                use : 'vue-loader',
+                test   : /\.vue$/,
+                loader : 'vue-loader',
+                options: {
+                    loaders: {
+                        css: ExtractTextPlugin.extract({
+                            use       : [
+                                'css-loader',
+                                'stylus-loader',
+                            ],
+                            fallback  : 'vue-style-loader', // <- this is a dep of vue-loader, so no need to explicitly install if using npm3
+                            publicPath: '../',
+                        }),
+                    },
+                },
             },
             // file-loader
             // https://github.com/webpack-contrib/file-loader
@@ -79,14 +87,33 @@ module.exports = {
             },
         ],
     },
+    resolve: {
+        // https://webpack.js.org/configuration/resolve/
+        alias: {
+            // 'views': `${pathConf.src}/views`,
+        },
+    },
     plugins: [
+        // use module everywhere
+        // https://webpack.js.org/plugins/provide-plugin/
+        new webpack.ProvidePlugin({
+            _  : 'lodash',
+        }),
         new ExtractTextPlugin({
-            filename: 'css/[name].css?[hash:5]',
+            filename : 'css/[name].css?[hash:5]',
+            // set the following option to `true` if you want to extract CSS from codesplit chunks into this main css file as well.
+            // This will result in *all* of your app's CSS being loaded upfront.
+            allChunks: false,
+        }),
+        // extract vendors
+        new CommonsChunkPlugin({
+            names   : ['lodash', 'vue', 'vuexRoute'],
+            filename: 'vendors/[name].js?[hash:5]',
         }),
         // extract runtime and manifest
         new CommonsChunkPlugin({
-            name    : ['runtime'],
-            filename: '[name].js?[hash:5]',
+            name     : ['runtime'],
+            minChunks: Infinity,
         }),
         // auto create html
         // the entry point "id=app" is necessary in the template html
