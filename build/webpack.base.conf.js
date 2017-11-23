@@ -37,6 +37,28 @@ module.exports = {
     },
     module : {
         rules: [
+            // {
+            //     test: /\.sass$/,
+            //     use : ExtractTextPlugin.extract({
+            //         use       : [
+            //             'css-loader',
+            //             'sass-loader',
+            //         ],
+            //         fallback  : 'vue-style-loader',
+            //         publicPath: '../',
+            //     }),
+            // },
+            // {
+            //     test: /\.styl$/,
+            //     use : ExtractTextPlugin.extract({
+            //         use       : [
+            //             'css-loader',
+            //             'stylus-loader',
+            //         ],
+            //         fallback  : 'vue-style-loader',
+            //         publicPath: '../',
+            //     }),
+            // },
             {
                 test   : /\.vue$/,
                 loader : 'vue-loader',
@@ -46,11 +68,11 @@ module.exports = {
                             use       : [
                                 'css-loader',
                                 'stylus-loader',
+                                // 'sass-loader'
                             ],
                             fallback  : 'vue-style-loader', // <- this is a dep of vue-loader, so no need to explicitly install if using npm3
                             publicPath: '../',
                         }),
-
                     },
                 },
             },

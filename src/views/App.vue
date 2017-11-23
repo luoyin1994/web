@@ -1,5 +1,8 @@
 <style>
-    @import "../static/css/main.css";
+    @import "../static/styles/css/main.css";
+    @import "../static/styles/scss/a.scss";
+    @import "../static/styles/sass/b.sass";
+    @import "../static/styles/styl/test.styl";
 </style>
 
 <template>
