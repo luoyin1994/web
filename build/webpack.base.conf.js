@@ -29,7 +29,7 @@ module.exports = {
         // vendors
         lodash   : 'lodash',
         vue      : 'vue',
-        vuexRoute: ['vuex', 'vue-route'],
+        vuexRoute: ['vuex', 'vue-router'],
     },
     output : {
         filename     : '[name].js?[hash:5]',
@@ -90,7 +90,8 @@ module.exports = {
     resolve: {
         // https://webpack.js.org/configuration/resolve/
         alias: {
-            // 'views': `${pathConf.src}/views`,
+            // http://www.imooc.com/article/17868
+            'vue$': 'vue/dist/vue.esm.js',
         },
     },
     plugins: [

@@ -5,9 +5,12 @@
 <template>
     <div id="app">
         <h1>{{title}}</h1>
-        <img src="../images/bird.jpg"> <img src="../assets/logo.png">
-        <button @click="testclick">change</button>
-        <index></index>
+        <!--<img src="../images/bird.jpg"> <img src="../assets/logo.png">-->
+        <!--<button @click="testclick">change</button>-->
+        <!--<index></index>-->
+        <router-link to="/foo">Go to Foo</router-link>
+        <router-link to="/bar">Go to Bar</router-link>
+        <router-view></router-view>
     </div>
 </template>
 
