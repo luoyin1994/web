@@ -50,6 +50,7 @@ module.exports = {
                             fallback  : 'vue-style-loader', // <- this is a dep of vue-loader, so no need to explicitly install if using npm3
                             publicPath: '../',
                         }),
+
                     },
                 },
             },
@@ -63,7 +64,7 @@ module.exports = {
                         loader : 'file-loader',
                         options: {
                             // extract image
-                            name: 'images/[name].[ext]?[hash:5]',
+                            name: 'static/images/[name].[ext]?[hash:5]',
                         },
                     },
                     {
@@ -74,6 +75,7 @@ module.exports = {
                             bypassOnDebug: true,
                         },
                     },
+
                 ],
             },
             // load font
@@ -82,7 +84,7 @@ module.exports = {
                 loader : 'file-loader',
                 options: {
                     // extract font
-                    name: 'fonts/[name].[ext]?[hash:5]',
+                    name: 'static/fonts/[name].[ext]?[hash:5]',
                 },
             },
         ],
@@ -91,17 +93,17 @@ module.exports = {
         // https://webpack.js.org/configuration/resolve/
         alias: {
             // http://www.imooc.com/article/17868
-            'vue$': 'vue/dist/vue.esm.js',
+            // 'vue$': 'vue/dist/vue.esm.js',
         },
     },
     plugins: [
         // use module everywhere
         // https://webpack.js.org/plugins/provide-plugin/
         new webpack.ProvidePlugin({
-            _  : 'lodash',
+            _: 'lodash',
         }),
         new ExtractTextPlugin({
-            filename : 'css/[name].css?[hash:5]',
+            filename : 'static/css/[name].css?[hash:5]',
             // set the following option to `true` if you want to extract CSS from codesplit chunks into this main css file as well.
             // This will result in *all* of your app's CSS being loaded upfront.
             allChunks: false,
@@ -137,7 +139,7 @@ module.exports = {
         new CopyWebpackPlugin([
             {
                 from: pathConf.assets,
-                to  : 'assets',
+                to  : 'static/assets',
             },
         ]),
     ],

@@ -5,7 +5,7 @@ const root = r(__dirname, '../');
 // dev directory
 const src    = r(root, 'src');
 const views  = r(root, src, 'views');
-const assets = r(src, 'assets');
+const assets = r(src, 'static/assets');
 
 // prod directory
 const dist = r(root, 'dist');

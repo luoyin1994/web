@@ -1,9 +1,10 @@
 <style>
-    @import "../../css/test.styl";
 </style>
+
 <template>
-    <h1>i am index</h1>
+    <div><img src="./img2.jpg"></div>
 </template>
+
 <script>
     export default {
         data() {
@@ -11,3 +12,4 @@
         },
     };
 </script>
+
