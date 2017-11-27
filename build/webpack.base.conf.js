@@ -2,7 +2,12 @@
 const webpack = require('webpack');
 
 // own module
-const pathConf = require('./path.conf');
+const pathConf         = require('./path.conf');
+const vueLoaderOptions = require('./vueLoaderOptions');
+const config           = require('./config');
+
+// variable
+const hash = config.prod.envHash ? '?[hash:5]' : '';
 
 // plugins
 // extract css
@@ -32,49 +37,15 @@ module.exports = {
         vuexRoute: ['vuex', 'vue-router'],
     },
     output : {
-        filename     : '[name].js?[hash:5]',
-        chunkFilename: '[name].js?[hash:5]',
+        filename     : `[name].js${hash}`,
+        chunkFilename: `[name].js${hash}`,
     },
     module : {
         rules: [
-            // {
-            //     test: /\.sass$/,
-            //     use : ExtractTextPlugin.extract({
-            //         use       : [
-            //             'css-loader',
-            //             'sass-loader',
-            //         ],
-            //         fallback  : 'vue-style-loader',
-            //         publicPath: '../',
-            //     }),
-            // },
-            // {
-            //     test: /\.styl$/,
-            //     use : ExtractTextPlugin.extract({
-            //         use       : [
-            //             'css-loader',
-            //             'stylus-loader',
-            //         ],
-            //         fallback  : 'vue-style-loader',
-            //         publicPath: '../',
-            //     }),
-            // },
             {
                 test   : /\.vue$/,
                 loader : 'vue-loader',
-                options: {
-                    loaders: {
-                        css: ExtractTextPlugin.extract({
-                            use       : [
-                                'css-loader',
-                                'stylus-loader',
-                                // 'sass-loader'
-                            ],
-                            fallback  : 'vue-style-loader', // <- this is a dep of vue-loader, so no need to explicitly install if using npm3
-                            publicPath: '../',
-                        }),
-                    },
-                },
+                options: vueLoaderOptions,
             },
             // file-loader
             // https://github.com/webpack-contrib/file-loader
@@ -86,7 +57,7 @@ module.exports = {
                         loader : 'file-loader',
                         options: {
                             // extract image
-                            name: 'static/images/[name].[ext]?[hash:5]',
+                            name: `static/images/[name].[ext]${hash}`,
                         },
                     },
                     {
@@ -106,7 +77,7 @@ module.exports = {
                 loader : 'file-loader',
                 options: {
                     // extract font
-                    name: 'static/fonts/[name].[ext]?[hash:5]',
+                    name: `static/fonts/[name].[ext]${hash}`,
                 },
             },
         ],
@@ -125,7 +96,7 @@ module.exports = {
             _: 'lodash',
         }),
         new ExtractTextPlugin({
-            filename : 'static/css/[name].css?[hash:5]',
+            filename : `static/css/[name].css${hash}`,
             // set the following option to `true` if you want to extract CSS from codesplit chunks into this main css file as well.
             // This will result in *all* of your app's CSS being loaded upfront.
             allChunks: false,
@@ -133,7 +104,7 @@ module.exports = {
         // extract vendors
         new CommonsChunkPlugin({
             names   : ['lodash', 'vue', 'vuexRoute'],
-            filename: 'vendors/[name].js?[hash:5]',
+            filename: `vendors/[name].js${hash}`,
         }),
         // extract runtime and manifest
         new CommonsChunkPlugin({
@@ -144,7 +115,7 @@ module.exports = {
         // the entry point "id=app" is necessary in the template html
         // https://github.com/ampedandwired/html-webpack-plugin
         new HtmlWebpackPlugin({
-            filename      : 'index.html?[hash:5]',
+            filename      : `index.html${hash}`,
             template      : 'index.html',
             inject        : true,
             minify        : {

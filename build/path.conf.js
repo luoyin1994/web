@@ -3,13 +3,13 @@ const r = require('path').resolve;
 const root = r(__dirname, '../');
 
 // dev directory
+const dev    = r(root, 'dev');
 const src    = r(root, 'src');
 const views  = r(root, src, 'views');
 const assets = r(src, 'static/assets');
 
 // prod directory
 const dist = r(root, 'dist');
-const dev  = r(root, 'dev');
 
 module.exports = {
     root,

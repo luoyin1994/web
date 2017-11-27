@@ -10,12 +10,13 @@ module.exports = {
             options: {analyzerPort: '9998'},
         },
     },
-    dist         : {
+    prod         : {
         sourceMap     : false,
         bundleAnalyzer: {
             open   : false,
             // https://github.com/webpack-contrib/webpack-bundle-analyzer
             options: {analyzerPort: '9999'},
         },
+        envHash       : true,
     },
 };

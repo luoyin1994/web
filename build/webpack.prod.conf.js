@@ -18,7 +18,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const WebpackBundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 let webpackProdConf = merge(webpackBaseConf, {
-    devtool: config.dist.sourceMap ? config.sourceMapType : false,
+    devtool: config.prod.sourceMap ? config.sourceMapType : false,
     output : {
         path: pathConf.dist,
     },
@@ -46,8 +46,8 @@ webpackProdConf.plugins.push(
 );
 
 // whether need WebpackBundleAnalyzer
-if (config.dist.bundleAnalyzer.open) {
-    webpackProdConf.plugins.push(new WebpackBundleAnalyzer(config.dist.bundleAnalyzer.options));
+if (config.prod.bundleAnalyzer.open) {
+    webpackProdConf.plugins.push(new WebpackBundleAnalyzer(config.prod.bundleAnalyzer.options));
 }
 
 module.exports = webpackProdConf;

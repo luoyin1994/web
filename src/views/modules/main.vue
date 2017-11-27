@@ -21,7 +21,7 @@
         methods: {
             testclick() {
 //                console.log(_);
-                import('lodash').then(_ => console.log(_));
+//                let a = () => import('lodash').then(_ => console.log(_));
                 this.title = (() => 5 + 6)();
             },
         },

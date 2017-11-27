@@ -16,7 +16,7 @@ let webpackDevConf = merge(webpackBaseConf, {
 });
 
 // whether need WebpackBundleAnalyzer
-if (config.dist.bundleAnalyzer.open) {
+if (config.dev.bundleAnalyzer.open) {
     webpackDevConf.plugins.push(new WebpackBundleAnalyzer(config.dev.bundleAnalyzer.options));
 }
 
