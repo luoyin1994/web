@@ -1,16 +1,18 @@
-<style scoped>
+<style lang="stylus" scoped>
+    ul
+        margin-left 20px
 </style>
 <template>
     <ul>
-        <router-link tag="li" to=""></router-link>
+        <router-link tag="li" to="/main/foo"><a>Go to Foo</a></router-link>
+        <router-link tag="li" to="/main/bar"><a>Go to Bar</a></router-link>
+        <router-link tag="li" to="/main/tar"><a>Go to Tar</a></router-link>
     </ul>
 </template>
 <script>
     export default {
         data() {
-            return {
-
-            };
+            return {};
         },
     };
 </script>

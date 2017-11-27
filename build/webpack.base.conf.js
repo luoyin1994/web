@@ -3,7 +3,6 @@ const webpack = require('webpack');
 
 // own module
 const pathConf         = require('./path.conf');
-const vueLoaderOptions = require('./vueLoaderOptions');
 const config           = require('./config');
 
 // variable
@@ -45,7 +44,18 @@ module.exports = {
             {
                 test   : /\.vue$/,
                 loader : 'vue-loader',
-                options: vueLoaderOptions,
+                options: {
+                    loaders: {
+                        css: ExtractTextPlugin.extract({
+                            use       : [
+                                'css-loader?sourceMap',
+                                'stylus-loader',
+                            ],
+                            fallback  : 'vue-style-loader?sourceMap', // <- this is a dep of vue-loader, so no need to explicitly install if using npm3
+                            publicPath: '../',
+                        }),
+                    },
+                },
             },
             // file-loader
             // https://github.com/webpack-contrib/file-loader
@@ -87,6 +97,7 @@ module.exports = {
         alias: {
             // http://www.imooc.com/article/17868
             // 'vue$': 'vue/dist/vue.esm.js',
+            '@components': pathConf.components,
         },
     },
     plugins: [

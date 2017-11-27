@@ -1,4 +1,5 @@
 <style>
+    @import "../static/styles/css/reset.css";
     @import "../static/styles/css/main.css";
     @import "../static/styles/scss/a.scss";
     @import "../static/styles/sass/b.sass";
@@ -8,6 +9,7 @@
 <template>
     <div id="app">
         <h1>我是入口app</h1>
+        <side-bar></side-bar>
         <router-view></router-view>
     </div>
 </template>
@@ -16,6 +18,9 @@
     export default {
         data() {
             return {};
+        },
+        components: {
+            'side-bar': require('./components/common/side-bar.vue').default,
         },
     };
 </script>

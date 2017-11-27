@@ -1,5 +1,6 @@
 module.exports = {
-    sourceMapType: 'eval-source-monitoring',
+    // sourceMapType: 'eval-source-monitoring',
+    sourceMapType: 'source-map',
     dev          : {
         server        : 'http://192.168.1.153',
         port          : 8099,

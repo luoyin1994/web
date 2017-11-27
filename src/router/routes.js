@@ -11,6 +11,10 @@ export default [
                 path     : 'bar',
                 component: () => import(/*webpackChunkName: 'bar.vue'*/'../views/modules/bar/bar.vue'),
             },
+            {
+                path     : 'tar',
+                component: () => import(/*webpackChunkName: 'bar.vue'*/'../views/modules/tar/tar.vue'),
+            },
         ],
     },
 

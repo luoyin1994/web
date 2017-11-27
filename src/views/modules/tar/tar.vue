@@ -1,11 +1,11 @@
-<style lang="sass">
-    .h2
+<style lang="scss">
+    .h2 {
         color: yellow
+    }
 </style>
 <template>
     <div>
-        <h2 class="h2">我是bar</h2>
-        <img src="./img2.jpg"> <img src="../../../static/images/bird.jpg">
+        <h2 class="h2">我是tar</h2>
     </div>
 </template>
 

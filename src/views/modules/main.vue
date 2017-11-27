@@ -5,8 +5,6 @@
     <div>
         <h1>{{title}}</h1>
         <button @click="testclick">change</button>
-        <router-link to="/main/foo">Go to Foo</router-link>
-        <router-link to="/main/bar">Go to Bar</router-link>
         <router-view></router-view>
     </div>
 </template>
