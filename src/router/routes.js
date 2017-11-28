@@ -13,11 +13,15 @@ export default [
             },
             {
                 path     : 'tar',
-                component: () => import(/*webpackChunkName: 'bar.vue'*/'../views/modules/tar/tar.vue'),
+                component: () => import(/*webpackChunkName: 'tar.vue'*/'../views/modules/tar/tar.vue'),
             },
             {
                 path     : 'bootstrap',
-                component: () => import(/*webpackChunkName: 'bar.vue'*/'../views/modules/bootstrap/bootstrap.vue'),
+                component: () => import(/*webpackChunkName: 'bootstrap.vue'*/'../views/modules/bootstrap/bootstrap.vue'),
+            },
+            {
+                path     : 'vuex',
+                component: () => import(/*webpackChunkName: 'vuex.vue'*/'../views/modules/store/vuex.vue'),
             },
         ],
     },

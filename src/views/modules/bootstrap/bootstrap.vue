@@ -16,9 +16,10 @@
         data() {
             return {};
         },
-        mounted(){
-            console.log(123)
-        }
+        mounted() {
+            console.log(this.$store.state.count, 'bootstrap');
+            this.$store.commit('increment');
+        },
     };
 </script>
 

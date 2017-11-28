@@ -14,6 +14,10 @@
         data() {
             return {};
         },
+        mounted() {
+            console.log(this.$store.state.count, 'tar');
+            this.$store.commit('increment');
+        },
     };
 </script>
 
