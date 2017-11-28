@@ -19,9 +19,6 @@
             };
         },
         mounted() {
-            this.addAsync.then(() => {
-                console.log('add async');
-            });
         },
         computed: {
             ...require('vuex').mapState({
@@ -35,10 +32,13 @@
                 this.title = (() => 5 + 6)();
             },
             ...require('vuex').mapMutations({
-                addSync: 'increment' // 将 `this.add()` 映射为 `this.$store.commit('increment')`
+                addSync: commit => {
+                    commit('increment');
+                    console.log('add sync');
+                }// 将 `this.add()` 映射为 `this.$store.commit('increment')`
             }),
             ...require('vuex').mapActions({
-                addAsync: 'incrementAsync' // 将 `this.add()` 映射为 `this.$store.commit('increment')`
+                addAsync: dispatch => dispatch('incrementAsync').then(() => console.log('add async')) // 将 `this.add()` 映射为 `this.$store.commit('increment')`
             })
         },
     };

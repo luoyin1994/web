@@ -7,7 +7,6 @@ import router from './router/router';
 import store from './vuex/store';
 // vue plugins
 import './vplugins/bootstrapVue';
-
 new Vue({
     el    : '#app',
     router,

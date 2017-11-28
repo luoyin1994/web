@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     state    : {
         count: 0,
         name : 'admin',
@@ -30,15 +30,29 @@ module.exports = {
         increment(state) {
             state.count++;
         },
+        pushTodo(state, toDoData) {
+            state.todos.push(toDoData);
+        },
     },
     actions  : {
+        getTodoData() {
+            return new Promise((reject) => {
+                setTimeout(() => {
+                    reject({
+                        id  : 3,
+                        text: '...',
+                        done: false,
+                    });
+                }, 1000);
+            });
+        },
         increment({commit}) {
             commit('increment');
         },
-        async incrementAsync({commit}) {
-            await setTimeout(() => {
-                commit('increment');
-            }, 1000);
+        async incrementAsync({dispatch, commit}) {
+            let data = await dispatch('getTodoData');
+            commit('pushTodo', data);
+            commit('increment');
         },
     },
 };

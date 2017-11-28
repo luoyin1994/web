@@ -13,6 +13,7 @@
         <p>{{'doneTodos: ' + JSON.stringify(doneTodos)}}</p>
         <p>{{'doneTodosCount: ' + doneTodosCount}}</p>
         <p>{{'getTodoById(1) : ' + JSON.stringify(getTodoById(2))}}</p>
+        <p>{{'todos : ' + JSON.stringify(todos)}}</p>
     </div>
 </template>
 <script>
@@ -30,8 +31,8 @@
             },
             ...require('vuex').mapState({
                 // 箭头函数可使代码更简练
-                count: state => state.count,
-
+                count     : state => state.count,
+                todos     : 'todos',
                 // 传字符串参数 'count' 等同于 `state => state.count`
                 countAlias: 'count',
 
