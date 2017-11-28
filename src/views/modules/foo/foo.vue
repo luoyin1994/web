@@ -1,12 +1,21 @@
-<style lang="stylus">
-    .h3
-        color red
+<style scoped>
+    h3 {
+        color: #ff5d67;
+    }
+
+    .move {
+        transform: translateY(50%);
+    }
+
+
 </style>
 
 <template>
     <div>
         <h3 class="h3">我是foo</h3>
-        <img src="./img1.jpg"> <img src="./bird.jpg"></div>
+        <div class="move"></div>
+        <img src="./img1.jpg"> <img src="./bird.jpg">
+    </div>
 </template>
 
 <script>

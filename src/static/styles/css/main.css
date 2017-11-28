@@ -1,4 +1,11 @@
+/*cssnext*/
+:root {
+  --fontSize: 1rem;
+  --otherColor: #12345678;
+  --mainColor: #eaeaea;
+}
+
 body {
-  background: #b2c2d6;
+  background: var(--mainColor);
   padding: 0;
 }

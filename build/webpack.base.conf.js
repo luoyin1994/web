@@ -4,6 +4,7 @@ const webpack = require('webpack');
 // own module
 const pathConf         = require('./path.conf');
 const config           = require('./config');
+const vueLoaderOptions = require('./vueLoaderOptions');
 
 // variable
 const hash = config.prod.envHash ? '?[hash:5]' : '';
@@ -44,18 +45,7 @@ module.exports = {
             {
                 test   : /\.vue$/,
                 loader : 'vue-loader',
-                options: {
-                    loaders: {
-                        css: ExtractTextPlugin.extract({
-                            use       : [
-                                'css-loader?sourceMap',
-                                'stylus-loader',
-                            ],
-                            fallback  : 'vue-style-loader?sourceMap', // <- this is a dep of vue-loader, so no need to explicitly install if using npm3
-                            publicPath: '../',
-                        }),
-                    },
-                },
+                options: vueLoaderOptions,
             },
             // file-loader
             // https://github.com/webpack-contrib/file-loader
