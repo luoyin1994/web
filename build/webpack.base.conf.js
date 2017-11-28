@@ -55,6 +55,12 @@ module.exports = {
                 ],
             },
             {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                include: [pathConf.src],
+                exclude: pathConf.node_modules
+            },
+            {
                 test   : /\.vue$/,
                 loader : 'vue-loader',
                 options: vueLoaderOptions,

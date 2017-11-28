@@ -1,16 +1,21 @@
 <style lang="stylus" scoped>
+    p
+        padding-left 15px
 </style>
 <template>
     <div>
         <h1>vuex test</h1>
-        <!--<p>{{localComputed}}</p>-->
-        <!--<p>{{'countAlias' + countAlias}}</p>-->
-        <!--<p>{{'count' + count}}</p>-->
-        <!--<p>{{'countPlusLocalState' + countPlusLocalState}}</p>-->
+        <p>{{'localComputed: ' + localComputed}}</p>
+        <p>{{'countAlias: ' + countAlias}}</p>
+        <p>{{'count: ' + count}}</p>
+        <p>{{'countPlusLocalState: ' + countPlusLocalState}}</p>
+        <p>{{'name: ' + name}}</p>
+        <p>{{'doneTodos: ' + JSON.stringify(doneTodos)}}</p>
+        <p>{{'doneTodosCount: ' + doneTodosCount}}</p>
+        <p>{{'getTodoById(1) : ' + JSON.stringify(getTodoById(2))}}</p>
     </div>
 </template>
 <script>
-    import {mapState} from 'vuex';
     export default {
         data() {
             return {
@@ -23,7 +28,7 @@
             localComputed() {
                 return 1 + 1;
             },
-            ...mapState({
+            ...require('vuex').mapState({
                 // 箭头函数可使代码更简练
                 count: state => state.count,
 
@@ -34,7 +39,14 @@
                 countPlusLocalState(state) {
                     return state.count + this.localCount;
                 },
-            })
+                name: 'name',
+            }),
+            ...require('vuex').mapGetters([
+                'doneTodos',
+                'doneTodosCount',
+                'getTodoById',
+            ])
         },
+
     };
 </script>

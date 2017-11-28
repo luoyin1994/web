@@ -8,6 +8,7 @@
         <router-link tag="li" to="/main/bar"><a>Go to Bar</a></router-link>
         <router-link tag="li" to="/main/tar"><a>Go to Tar</a></router-link>
         <router-link tag="li" to="/main/bootstrap"><a>Go to bootstrap</a></router-link>
+        <router-link tag="li" to="/main/vuex"><a>Go to vuex</a></router-link>
     </ul>
 </template>
 <script>
