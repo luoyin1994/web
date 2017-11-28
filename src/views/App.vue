@@ -17,7 +17,7 @@
 <script>
     export default {
         components: {
-            'side-bar': require('./components/common/side-bar.vue').default,
+            'side-bar': require('./common/side-bar.vue').default,
         },
         data() {
             return {};

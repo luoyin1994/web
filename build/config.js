@@ -2,7 +2,7 @@ module.exports = {
     // sourceMapType: 'eval-source-monitoring',
     sourceMapType: 'source-map',
     dev          : {
-        server        : 'http://192.168.1.153',
+        host        : 'localhost',
         port          : 8099,
         sourceMap     : true,
         bundleAnalyzer: {

@@ -1,7 +1,7 @@
 const r = require('path').resolve;
 
-const root = r(__dirname, '../');
-
+const root       = r(__dirname, '../');
+const logoIcon   = r(__dirname, 'logo.png');
 // dev directory
 const dev        = r(root, 'dev');
 const src        = r(root, 'src');
@@ -19,4 +19,5 @@ module.exports = {
     dev,
     assets,
     components,
+    logoIcon,
 };

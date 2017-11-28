@@ -13,7 +13,7 @@
     export default {
         data() {
             return {
-                title: '我是app下主vue文件',
+                title: '我是各模块基础main组件',
             };
         },
         methods: {
