@@ -16,11 +16,12 @@
 
 <script>
     export default {
-        data() {
-            return {};
-        },
         components: {
             'side-bar': require('./components/common/side-bar.vue').default,
         },
+        data() {
+            return {};
+        },
+
     };
 </script>
