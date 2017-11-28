@@ -42,6 +42,18 @@ module.exports = {
     },
     module : {
         rules: [
+            // 在main.js中引用时
+            {
+                test: /\.css$/,
+                use : [
+                    'style-loader',
+                    {
+                        loader : 'css-loader',
+                        options: {importLoaders: 1},
+                    },
+                    'postcss-loader',
+                ],
+            },
             {
                 test   : /\.vue$/,
                 loader : 'vue-loader',

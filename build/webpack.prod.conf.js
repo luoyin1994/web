@@ -34,6 +34,21 @@ let webpackProdConf = merge(webpackBaseConf, {
     ],
 });
 
+if (config.prod.gzip) {
+    // gzip
+    const CompressionWebpackPlugin = require('compression-webpack-plugin');
+
+    webpackProdConf.plugins.push(new CompressionWebpackPlugin({
+        asset    : '[path].gz?[query]',
+        algorithm: 'gzip',
+        test     : new RegExp(
+            '\\.(js|css)($|\\?)'
+        ),
+        threshold: 10240,
+        minRatio : 0.8,
+    }));
+}
+
 // define env production
 webpackProdConf.plugins.push(
     // https://doc.webpack-china.org/guides/production/

@@ -1,8 +1,8 @@
 module.exports = {
-    // sourceMapType: 'eval-source-monitoring',
+    // sourceMapType: 'eval-source-map',
     sourceMapType: 'source-map',
     dev          : {
-        host        : 'localhost',
+        host          : 'localhost',
         port          : 8099,
         sourceMap     : true,
         bundleAnalyzer: {
@@ -19,5 +19,6 @@ module.exports = {
             options: {analyzerPort: '9999'},
         },
         envHash       : true,
+        gzip          : true,
     },
 };

@@ -1,9 +1,9 @@
 <style>
     @import "../static/styles/css/reset.css";
-    @import "../static/styles/css/main.css";
-    @import "../static/styles/scss/a.scss";
-    @import "../static/styles/sass/b.sass";
-    @import "../static/styles/styl/test.styl";
+    /*@import "../static/styles/css/main.css";*/
+    /*@import "../static/styles/scss/a.scss";*/
+    /*@import "../static/styles/sass/b.sass";*/
+    /*@import "../static/styles/styl/test.styl";*/
 </style>
 
 <template>
