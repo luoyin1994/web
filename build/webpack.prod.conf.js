@@ -13,9 +13,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 // current webpack.optimize.UglifyJsPlugin cant support es6
 // https://webpack.js.org/plugins/uglifyjs-webpack-plugin/
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-// bundle Analysis
-// https://webpack.js.org/guides/code-splitting/#bundle-analysis
-const WebpackBundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 let webpackProdConf = merge(webpackBaseConf, {
     devtool: config.prod.sourceMap ? config.sourceMapType : false,
@@ -34,21 +31,6 @@ let webpackProdConf = merge(webpackBaseConf, {
     ],
 });
 
-if (config.prod.gzip) {
-    // gzip
-    const CompressionWebpackPlugin = require('compression-webpack-plugin');
-
-    webpackProdConf.plugins.push(new CompressionWebpackPlugin({
-        asset    : '[path].gz?[query]',
-        algorithm: 'gzip',
-        test     : new RegExp(
-            '\\.(js|css)($|\\?)'
-        ),
-        threshold: 10240,
-        minRatio : 0.8,
-    }));
-}
-
 // define env production
 webpackProdConf.plugins.push(
     // https://doc.webpack-china.org/guides/production/
@@ -62,6 +44,9 @@ webpackProdConf.plugins.push(
 
 // whether need WebpackBundleAnalyzer
 if (config.prod.bundleAnalyzer.open) {
+    // bundle Analysis
+    // https://webpack.js.org/guides/code-splitting/#bundle-analysis
+    const WebpackBundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
     webpackProdConf.plugins.push(new WebpackBundleAnalyzer(config.prod.bundleAnalyzer.options));
 }
 

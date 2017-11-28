@@ -11,9 +11,6 @@ const pkg             = require('../package.json');
 // FriendlyErrors
 // https://github.com/geowarin/friendly-errors-webpack-plugin
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-// bundle Analysis
-// https://webpack.js.org/guides/code-splitting/#bundle-analysis
-const WebpackBundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 let webpackDevConf = merge(webpackBaseConf, {
         devtool  : config.dev.sourceMap ? config.sourceMapType : false,
@@ -53,6 +50,9 @@ let webpackDevConf = merge(webpackBaseConf, {
 
 // whether need WebpackBundleAnalyzer
 if (config.dev.bundleAnalyzer.open) {
+    // bundle Analysis
+    // https://webpack.js.org/guides/code-splitting/#bundle-analysis
+    const WebpackBundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
     webpackDevConf.plugins.push(new WebpackBundleAnalyzer(config.dev.bundleAnalyzer.options));
 }
 
