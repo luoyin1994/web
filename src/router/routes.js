@@ -20,8 +20,12 @@ export default [
                 component: () => import(/*webpackChunkName: 'bootstrap.vue'*/'../views/modules/bootstrap/bootstrap.vue'),
             },
             {
-                path     : 'testVuex',
+                path     : 'map/testVuex',
                 component: () => import(/*webpackChunkName: 'testVuex.vue'*/'../views/modules/map/testVuex.vue'),
+            },
+            {
+                path     : 'map/testVuex2',
+                component: () => import(/*webpackChunkName: 'testVuex2.vue'*/'../views/modules/map/testVuex2.vue'),
             },
         ],
     },

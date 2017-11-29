@@ -5,6 +5,7 @@ export default {
     mutations : {},
     actions   : {},
     modules   : {
-        testVuex: require('./testVuex.store').default,
+        testVuex : require('./testVuex.store').default,
+        testVuex2: require('./testVuex2.store').default,
     },
 };
