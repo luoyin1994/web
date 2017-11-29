@@ -55,10 +55,10 @@ module.exports = {
                 ],
             },
             {
-                test: /\.js$/,
-                loader: 'babel-loader',
+                test   : /\.js$/,
+                loader : 'babel-loader',
                 include: [pathConf.src],
-                exclude: pathConf.node_modules
+                exclude: pathConf.node_modules,
             },
             {
                 test   : /\.vue$/,
@@ -100,14 +100,7 @@ module.exports = {
             },
         ],
     },
-    resolve: {
-        // https://webpack.js.org/configuration/resolve/
-        alias: {
-            // http://www.imooc.com/article/17868
-            // 'vue$': 'vue/dist/vue.esm.js',
-            '@components': pathConf.components,
-        },
-    },
+    resolve: config.webpackResolve,
     plugins: [
         // use module everywhere
         // https://webpack.js.org/plugins/provide-plugin/
