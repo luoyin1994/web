@@ -8,7 +8,7 @@
         <p>{{'localComputed: ' + localComputed}}</p>
         <p>{{'countAlias: ' + countAlias}}</p>
         <p>{{'count: ' + count}}</p>
-        <p>{{'countPlusLocalState: ' + countPlusLocalState}}</p>
+        <p>{{'countLocalState: ' + countLocalState}}</p>
         <p>{{'name: ' + name}}</p>
         <p>{{'doneTodos: ' + JSON.stringify(doneTodos)}}</p>
         <p>{{'doneTodosCount: ' + doneTodosCount}}</p>
@@ -17,6 +17,10 @@
     </div>
 </template>
 <script>
+    import {createNamespacedHelpers} from 'vuex';
+
+    const {mapState, mapGetters, mapMutations, mapActions} = createNamespacedHelpers('map/testVuex');
+
     export default {
         data() {
             return {
@@ -29,7 +33,7 @@
             localComputed() {
                 return 1 + 1;
             },
-            ...require('vuex').mapState({
+            ...mapState({
                 // 箭头函数可使代码更简练
                 count     : state => state.count,
                 todos     : 'todos',
@@ -37,12 +41,12 @@
                 countAlias: 'count',
 
                 // 为了能够使用 `this` 获取局部状态，必须使用常规函数
-                countPlusLocalState(state) {
+                countLocalState(state) {
                     return state.count + this.localCount;
                 },
                 name: 'name',
             }),
-            ...require('vuex').mapGetters([
+            ...mapGetters([
                 'doneTodos',
                 'doneTodosCount',
                 'getTodoById',

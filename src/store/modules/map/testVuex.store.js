@@ -1,5 +1,6 @@
 export default {
-    state    : {
+    namespaced: true,
+    state     : {
         count: 0,
         name : 'admin',
         todos: [
@@ -15,26 +16,32 @@ export default {
             },
         ],
     },
-    getters  : {
+    getters   : {
         doneTodos     : state => {
             return state.todos.filter(todo => todo.done);
         },
         doneTodosCount: (state, getters) => {
             return getters.doneTodos.length;
         },
+        todosCount    : (state) => {
+            return state.todos.length;
+        },
         getTodoById   : (state, getters) => id => {
             return state.todos.find(todo => todo.id === id);
         },
     },
-    mutations: {
+    mutations : {
         increment(state) {
             state.count++;
         },
         pushTodo(state, toDoData) {
             state.todos.push(toDoData);
         },
+        logTodosCount(state) {
+            console.log(state.todosCount);
+        },
     },
-    actions  : {
+    actions   : {
         getTodoData() {
             return new Promise((reject) => {
                 setTimeout(() => {
@@ -46,13 +53,18 @@ export default {
                 }, 1000);
             });
         },
-        increment({commit}) {
-            commit('increment');
-        },
-        async incrementAsync({dispatch, commit}) {
+        async addTodosAsync({dispatch, commit}) {
             let data = await dispatch('getTodoData');
             commit('pushTodo', data);
-            commit('increment');
+            commit('logTodosCount');
+        },
+        incrementAsync({commit}) {
+            return new Promise((reject) => {
+                setTimeout(() => {
+                    commit('increment');
+                    reject();
+                }, 1000);
+            });
         },
     },
 };

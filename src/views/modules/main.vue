@@ -6,12 +6,16 @@
         <h1>{{title}}</h1>
         <button @click="addSync">increment sync</button>
         <button @click="addAsync">increment async</button>
-        <span>{{count}}</span>
+        <button @click="addTodosAsync">addTodos async</button>
+        <span>todoCount: {{todosCount}} </span> <span>increment: {{count}} </span>
         <router-view></router-view>
     </div>
 </template>
 
 <script>
+    import {createNamespacedHelpers} from 'vuex';
+
+    const {mapState, mapGetters, mapMutations, mapActions} = createNamespacedHelpers('map/testVuex');
     export default {
         data() {
             return {
@@ -21,8 +25,11 @@
         mounted() {
         },
         computed: {
-            ...require('vuex').mapState({
+            ...mapState({
                 count: 'count',
+            }),
+            ...mapGetters({
+                todosCount: 'todosCount',
             })
         },
         methods : {
@@ -31,14 +38,15 @@
 //                let a = () => import('lodash').then(_ => console.log(_));
                 this.title = (() => 5 + 6)();
             },
-            ...require('vuex').mapMutations({
+            ...mapMutations({
                 addSync: commit => {
                     commit('increment');
                     console.log('add sync');
                 }// 将 `this.add()` 映射为 `this.$store.commit('increment')`
             }),
-            ...require('vuex').mapActions({
-                addAsync: dispatch => dispatch('incrementAsync').then(() => console.log('add async')) // 将 `this.add()` 映射为 `this.$store.commit('increment')`
+            ...mapActions({
+                addAsync     : dispatch => dispatch('incrementAsync').then(() => console.log('add async')), // 将 `this.add()` 映射为 `this.$store.commit('increment')`
+                addTodosAsync: 'addTodosAsync',
             })
         },
     };

@@ -23,10 +23,6 @@
         data() {
             return {};
         },
-        mounted() {
-            console.log(this.$store.state.count, 'foo');
-            this.$store.commit('increment');
-        },
     };
 </script>
 
