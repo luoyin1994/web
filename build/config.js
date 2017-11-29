@@ -1,9 +1,12 @@
+const pathConf = require('./path.conf');
+
 const webpackResolve = {
     // https://webpack.js.org/configuration/resolve/
     alias: {
         // http://www.imooc.com/article/17868
         // 'vue$': 'vue/dist/vue.esm.js',
         '@components': pathConf.components,
+        '@api'       : pathConf.api,
     },
 };
 

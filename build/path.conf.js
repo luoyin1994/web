@@ -9,8 +9,10 @@ const src          = r(root, 'src');
 const views        = r(root, src, 'views');
 const assets       = r(src, 'static/assets');
 const components   = r(views, 'components');
+const api          = r(src, 'api/index');
+
 // prod directory
-const dist         = r(root, 'dist');
+const dist = r(root, 'dist');
 
 module.exports = {
     root,
@@ -22,4 +24,5 @@ module.exports = {
     components,
     logoIcon,
     node_modules,
+    api,
 };

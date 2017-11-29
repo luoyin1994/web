@@ -27,6 +27,11 @@ export default [
                 path     : 'map/testVuex2',
                 component: () => import(/*webpackChunkName: 'testVuex2.vue'*/'../views/modules/map/testVuex2.vue'),
             },
+
+            {
+                path     : 'testApi/testApi',
+                component: () => import(/*webpackChunkName: 'testVuex2.vue'*/'../views/modules/testApi/testApi.vue'),
+            },
         ],
     },
 

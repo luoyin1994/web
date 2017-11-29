@@ -4,6 +4,7 @@ export default {
     mutations: {},
     actions  : {},
     modules  : {
-        map: require('./map/index').default,
+        map    : require('./map/index').default,
+        testApi: require('./testApi/index').default,
     },
 };
