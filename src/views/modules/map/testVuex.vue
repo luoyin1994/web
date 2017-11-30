@@ -24,7 +24,7 @@
     export default {
         data() {
             return {
-                localCount: 5,
+                localCount: 5
             };
         },
         mounted() {
@@ -44,14 +44,14 @@
                 countLocalState(state) {
                     return state.count + this.localCount;
                 },
-                name: 'name',
+                name: 'name'
             }),
             ...mapGetters([
                 'doneTodos',
                 'doneTodosCount',
-                'getTodoById',
+                'getTodoById'
             ])
-        },
+        }
 
     };
 </script>

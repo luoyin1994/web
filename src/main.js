@@ -2,13 +2,13 @@ import Vue from 'vue';
 
 import App from './views/App.vue';
 
-import router from './conf/router.conf';
+import router from './conf/router';
 
 import store from './store/store';
 
 // bind filters
-import * as filters from './lib/filters';
-Object.keys(filters).forEach(k => Vue.filter(k, filters[k]));
+// import * as filters from './lib/filters';
+// Object.keys(filters).forEach(k => Vue.filter(k, filters[k]));
 
 // vue plugins
 // import './lib/vplugins/bootstrapVue';

@@ -1,22 +1,22 @@
 import axios from 'axios';
-import Constant from '../conf/api.conf';
+import apiConf from '../conf/api.conf';
+import api from './api';
 
-const a = 'pc/get-configuration-system-file';
-
-export async function ajax(config, needTk = true) {
-    let defaultConfig = {
-        method: 'post'
-    };
-    return await axios(Object.assign({
-        url: Constant.API_URL + config.url,
-        tk : needTk
-            ? Constant.TK
-            : undefined
-    }, defaultConfig, config)).then(
-        response => response.data,
-        response => ({
-            code: Constant.ERR_NETWORK,
-            data: response
+export default function ajax(url, params = {}, needTk = true) {
+    params.tk = needTk ? api.tk : undefined;
+    return axios({
+        method : 'post',
+        baseURL: apiConf.BASE_URL,
+        url,
+        params
+    })
+    .then(
+        res => res.data
+    )
+    .catch(
+        err => ({
+            code: apiConf.ERR_NETWORK,
+            data: err
         })
     );
 }
