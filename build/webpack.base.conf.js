@@ -4,7 +4,7 @@ const webpack = require('webpack');
 // own module
 const pathConf         = require('./path.conf');
 const config           = require('./config');
-const vueLoaderOptions = require('./vueLoaderOptions');
+const vueLoaderOptions = require('./vueloader.options');
 
 // variable
 const hash = config.prod.envHash ? '?[hash:5]' : '';
@@ -34,11 +34,11 @@ module.exports = {
         // vendors
         lodash   : 'lodash',
         vue      : 'vue',
-        vuexRoute: ['vuex', 'vue-router'],
+        vuexRoute: ['vuex', 'vue-router']
     },
     output : {
         filename     : `[name].js${hash}`,
-        chunkFilename: `[name].js${hash}`,
+        chunkFilename: `[name].js${hash}`
     },
     module : {
         rules: [
@@ -49,21 +49,21 @@ module.exports = {
                     'style-loader',
                     {
                         loader : 'css-loader',
-                        options: {importLoaders: 1},
+                        options: {importLoaders: 1}
                     },
-                    'postcss-loader',
-                ],
+                    'postcss-loader'
+                ]
             },
             {
                 test   : /\.js$/,
                 loader : 'babel-loader',
                 include: [pathConf.src],
-                exclude: pathConf.node_modules,
+                exclude: pathConf.node_modules
             },
             {
                 test   : /\.vue$/,
                 loader : 'vue-loader',
-                options: vueLoaderOptions,
+                options: vueLoaderOptions
             },
             // file-loader
             // https://github.com/webpack-contrib/file-loader
@@ -75,19 +75,19 @@ module.exports = {
                         loader : 'file-loader',
                         options: {
                             // extract image
-                            name: `static/images/[name].[ext]${hash}`,
-                        },
+                            name: `static/images/[name].[ext]${hash}`
+                        }
                     },
                     {
                         // compress image
                         // https://github.com/tcoopman/image-webpack-loader
                         loader : 'image-webpack-loader',
                         options: {
-                            bypassOnDebug: true,
-                        },
-                    },
+                            bypassOnDebug: true
+                        }
+                    }
 
-                ],
+                ]
             },
             // load font
             {
@@ -95,33 +95,32 @@ module.exports = {
                 loader : 'file-loader',
                 options: {
                     // extract font
-                    name: `static/fonts/[name].[ext]${hash}`,
-                },
-            },
-        ],
+                    name: `static/fonts/[name].[ext]${hash}`
+                }
+            }
+        ]
     },
-    resolve: config.webpackResolve,
     plugins: [
         // use module everywhere
         // https://webpack.js.org/plugins/provide-plugin/
         new webpack.ProvidePlugin({
-            _: 'lodash',
+            _: 'lodash'
         }),
         new ExtractTextPlugin({
             filename : `static/css/[name].css${hash}`,
             // set the following option to `true` if you want to extract CSS from codesplit chunks into this main css file as well.
             // This will result in *all* of your app's CSS being loaded upfront.
-            allChunks: false,
+            allChunks: false
         }),
         // extract vendors
         new CommonsChunkPlugin({
             names   : ['lodash', 'vue', 'vuexRoute'],
-            filename: `vendors/[name].js${hash}`,
+            filename: `vendors/[name].js${hash}`
         }),
         // extract runtime and manifest
         new CommonsChunkPlugin({
             name     : ['runtime'],
-            minChunks: Infinity,
+            minChunks: Infinity
         }),
         // auto create html
         // the entry point "id=app" is necessary in the template html
@@ -132,20 +131,20 @@ module.exports = {
             inject        : true,
             minify        : {
                 removeComments    : true,
-                collapseWhitespace: true,
+                collapseWhitespace: true
                 // removeAttributeQuotes: true,
                 // more options:
                 // https://github.com/kangax/html-minifier#options-quick-reference
             },
             // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-            chunksSortMode: 'dependency',
+            chunksSortMode: 'dependency'
         }),
         // copy custom assets
         new CopyWebpackPlugin([
             {
                 from: pathConf.assets,
-                to  : 'static/assets',
-            },
-        ]),
-    ],
+                to  : 'static/assets'
+            }
+        ])
+    ]
 };

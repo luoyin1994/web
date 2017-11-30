@@ -5,7 +5,6 @@ const merge           = require('webpack-merge');
 const pathConf        = require('./path.conf');
 const webpackBaseConf = require('./webpack.base.conf');
 const config          = require('./config');
-const pkg             = require('../package.json');
 
 // plugins
 // FriendlyErrors
@@ -18,33 +17,15 @@ let webpackDevConf = merge(webpackBaseConf, {
             // https://doc.webpack-china.org/configuration/dev-server/#devserver
             contentBase: pathConf.dev,
             port       : config.dev.port,
-            quiet      : true,
+            quiet      : true
         },
         plugins  : [
             new FriendlyErrorsWebpackPlugin({
                 compilationSuccessInfo: {
-                    messages: [`Your application is running here: http://${config.dev.host}:${config.dev.port}`],
-                },
-                onErrors              : function() {
-                    const notifier = require('node-notifier');
-
-                    return (severity, errors) => {
-                        if (severity !== 'error') {
-                            return;
-                        }
-                        const error = errors[0];
-
-                        const filename = error.file && error.file.split('!').pop();
-                        notifier.notify({
-                            title   : pkg.name,
-                            message : severity + ': ' + error.name,
-                            subtitle: filename || '',
-                            icon    : pathConf.logoIcon,
-                        });
-                    };
-                },
-            }),
-        ],
+                    messages: [`Your application is running here: http://${config.dev.host}:${config.dev.port}`]
+                }
+            })
+        ]
     })
 ;
 

@@ -24,5 +24,5 @@ module.exports = {
     components,
     logoIcon,
     node_modules,
-    api,
+    api
 };

@@ -2,7 +2,7 @@ import Toast from 'vue-toast-mobile';
 import moment from 'moment';
 import validIdentityCard from './identity-card';
 import {WebConstant} from './web-constant'
-import {WebApi} from './web-api'
+import {WebApi} from './api'
 
 
 var WebUtil = {

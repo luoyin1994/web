@@ -1,11 +1,11 @@
 import Vue from 'vue'
-import {WebUtil} from './web-util.js';
-import {WebHttp} from './web-http.js';
+import {WebUtil} from './utils.js';
+import {WebHttp} from '../api/web-http.js';
 import {WebConstant} from './web-constant.js';
 import router from '../core/router'
 
 var WebApi = {
-    tk: null,
+    tk: 'tk=47b5c4921b01c920f1735a58a60a4caf',
     progress_started: false,
     configFile: null,
     pageSize: 10,

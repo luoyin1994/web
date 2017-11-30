@@ -3,7 +3,7 @@
     /*@import "../static/styles/css/main.css";*/
     /*@import "../static/styles/scss/a.scss";*/
     /*@import "../static/styles/sass/b.sass";*/
-    /*@import "../static/styles/styl/test.styl";*/
+    @import "../static/styles/styl/test.styl";
 </style>
 
 <template>
@@ -17,7 +17,7 @@
 <script>
     export default {
         components: {
-            'side-bar': require('./common/side-bar.vue').default,
+            'side-bar': require('./common/router-side-bar.vue').default,
         },
         data() {
             return {};

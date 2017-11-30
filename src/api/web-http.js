@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import {WebApi} from './web-api.js';
+import {WebApi} from '../lib/api.js';
 import {WebConstant}  from './web-constant.js'
 
 var WebHttp = {

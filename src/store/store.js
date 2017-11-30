@@ -2,18 +2,29 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import createLogger from 'vuex/dist/logger';
 
-import modules from './modules/root';
-
 Vue.use(Vuex);
+
+let debug = process.env.NODE_ENV !== 'production';
+
+let modules = {
+    state    : {},
+    getter   : {},
+    mutations: {},
+    actions  : {},
+    modules  : {
+        map    : require('./modules/map/index').default,
+        testApi: require('./modules/testApi/index').default
+    }
+};
 
 export default new Vuex.Store(Object.assign(modules, {
     // 严格模式
     // https://vuex.vuejs.org/zh-cn/strict.html
-    strict : process.env.NODE_ENV !== 'production',
-    plugins: [
+    strict : debug,
+    plugins: debug ? [
         // https://vuex.vuejs.org/zh-cn/plugins.html
         // 控制台打印出vuex改变
         // 如果正在使用 vue-devtools，你可能不需要此插件。
-        createLogger(),
-    ],
+        createLogger()
+    ] : []
 }));
