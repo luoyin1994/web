@@ -7,11 +7,10 @@ import router from './conf/router';
 import store from './store/store';
 
 // bind filters
-// import * as filters from './lib/filters';
-// Object.keys(filters).forEach(k => Vue.filter(k, filters[k]));
+import './lib/filters';
 
 // vue plugins
-// import './lib/vplugins/bootstrapVue';
+// import './lib/plugins/bootstrapVue';
 
 new Vue({
     el    : '#app',

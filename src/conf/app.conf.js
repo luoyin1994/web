@@ -1,4 +1,5 @@
 export default {
+    DEBUG: process.env.NODE_ENV !== 'production',
     SOCKET_URL: '222.73.24.45:3000',
 
     MAP_WIDTH: 22980,

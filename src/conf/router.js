@@ -18,24 +18,24 @@ export default new VueRouter({
                     component: () => import(/*webpackChunkName: 'bar.vue'*/'../views/modules/bar/bar.vue')
                 },
                 {
-                    path     : 'tar',
-                    component: () => import(/*webpackChunkName: 'tar.vue'*/'../views/modules/tar/tar.vue')
-                },
-                {
                     path     : 'bootstrap',
                     component: () => import(/*webpackChunkName: 'bootstrap.vue'*/'../views/modules/bootstrap/bootstrap.vue')
                 },
                 {
-                    path     : 'map/testVuex',
-                    component: () => import(/*webpackChunkName: 'testVuex.vue'*/'../views/modules/map/testVuex.vue')
+                    path     : 'test/testFilters',
+                    component: () => import(/*webpackChunkName: 'testFilters.vue'*/'../views/modules/test/testFilters.vue')
                 },
                 {
-                    path     : 'map/testVuex2',
-                    component: () => import(/*webpackChunkName: 'testVuex2.vue'*/'../views/modules/map/testVuex2.vue')
+                    path     : 'test/testVuex',
+                    component: () => import(/*webpackChunkName: 'testVuex.vue'*/'../views/modules/test/testVuex.vue')
                 },
                 {
-                    path     : 'testApi/testApi',
-                    component: () => import(/*webpackChunkName: 'testApi.vue'*/'../views/modules/testApi/testApi.vue')
+                    path     : 'test/testApi',
+                    component: () => import(/*webpackChunkName: 'testApi.vue'*/'../views/modules/test/testApi.vue')
+                },
+                {
+                    path     : 'test/testApi2',
+                    component: () => import(/*webpackChunkName: 'testApi2.vue'*/'../views/modules/test/testApi2.vue')
                 }
             ]
         }

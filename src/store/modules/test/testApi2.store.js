@@ -1,14 +1,14 @@
 export default {
     namespaced: true,
     state     : {
-        title: '我是map下的testVuex2.vue',
-        msg  : '我是massage',
+        title: '兄弟组件信息沟通例子',
+        msg  : '我是massage'
     },
     getters   : {},
     mutations : {
         changeMsg(state, msg) {
             state.msg = msg;
-        },
+        }
     },
     actions   : {
         changeMsgAsync({commit}, msg) {
@@ -18,6 +18,6 @@ export default {
                     reject();
                 }, 1000);
             });
-        },
-    },
+        }
+    }
 };

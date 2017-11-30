@@ -12,8 +12,7 @@ let modules = {
     mutations: {},
     actions  : {},
     modules  : {
-        map    : require('./modules/map/index').default,
-        testApi: require('./modules/testApi/index').default
+        test: require('./modules/test/index').default
     }
 };
 

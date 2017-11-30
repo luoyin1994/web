@@ -4,7 +4,7 @@
 </style>
 <template>
     <div>
-        <h1>vuex test</h1>
+        <h1>测试vuex</h1>
         <p>{{'localComputed: ' + localComputed}}</p>
         <p>{{'countAlias: ' + countAlias}}</p>
         <p>{{'count: ' + count}}</p>
@@ -19,7 +19,7 @@
 <script>
     import {createNamespacedHelpers} from 'vuex';
 
-    const {mapState, mapGetters, mapMutations, mapActions} = createNamespacedHelpers('map/testVuex');
+    const {mapState, mapGetters, mapMutations, mapActions} = createNamespacedHelpers('test/testVuex');
 
     export default {
         data() {

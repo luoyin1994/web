@@ -15,13 +15,15 @@
 </template>
 
 <script>
+    import '../lib/utils';
+
     export default {
         components: {
-            'side-bar': require('./common/router-side-bar.vue').default,
+            'side-bar': require('./common/router-side-bar.vue').default
         },
         data() {
             return {};
-        },
+        }
 
     };
 </script>
