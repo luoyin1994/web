@@ -3,7 +3,7 @@ module.exports = {
     sourceMapType: 'source-map',
     dev          : {
         host          : 'localhost',
-        port          : 8099,
+        port          : 8098,
         sourceMap     : true,
         bundleAnalyzer: {
             open   : false,
@@ -18,7 +18,6 @@ module.exports = {
             // https://github.com/webpack-contrib/webpack-bundle-analyzer
             options: {analyzerPort: '9999'}
         },
-        envHash       : true,
-        gzip          : true
+        needHash      : true
     }
 };

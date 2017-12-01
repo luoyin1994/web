@@ -7,7 +7,7 @@ const config           = require('./config');
 const vueLoaderOptions = require('./vueloader.options');
 
 // variable
-const hash = config.prod.envHash ? '?[hash:5]' : '';
+const hash = config.prod.needHash ? '?[hash:5]' : '';
 
 // plugins
 // extract css
@@ -42,7 +42,7 @@ module.exports = {
     },
     module : {
         rules: [
-            // 在main.js中引用时
+            // import not in .vue
             {
                 test: /\.css$/,
                 use : [
@@ -108,9 +108,7 @@ module.exports = {
     plugins: [
         // use module everywhere
         // https://webpack.js.org/plugins/provide-plugin/
-        new webpack.ProvidePlugin({
-            _: 'lodash'
-        }),
+        new webpack.ProvidePlugin({}),
         new ExtractTextPlugin({
             filename : `static/css/[name].css${hash}`,
             // set the following option to `true` if you want to extract CSS from codesplit chunks into this main css file as well.
@@ -119,7 +117,7 @@ module.exports = {
         }),
         // extract vendors
         new CommonsChunkPlugin({
-            names   : ['lodash', 'vue', 'vuexRoute'],
+            names   : ['vue', 'vuexRoute'],
             filename: `vendors/[name].js${hash}`
         }),
         // extract runtime and manifest
