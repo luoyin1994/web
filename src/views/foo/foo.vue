@@ -14,7 +14,7 @@
     <div>
         <h3 class="h3">我是foo</h3>
         <div class="move"></div>
-        <img src="./img1.jpg"> <img src="./bird.jpg">
+        <img src="../../static/images/img1.jpg"> <img src="../../static/images/bird.jpg">
     </div>
 </template>
 
@@ -22,7 +22,7 @@
     export default {
         data() {
             return {};
-        },
+        }
     };
 </script>
 

@@ -1,18 +1,24 @@
 import axios from 'axios';
-import apiConf from '../../conf/api.conf';
+import {
+    BASE_URL,
+    ERR_NETWORK
+} from '../../conf/api.conf';
 import api from './../api';
 
-export const httpRequest = (url, params = {}, options = {needTk: true}) => {
+export const httpRequest = (url, params = {}, options = {}) => {
+    options   = Object.assign({
+        needTk: true
+    }, options);
     params.tk = options.needTk ? api.tk : undefined;
     return axios({
         method : 'post',
-        baseURL: apiConf.BASE_URL,
+        baseURL: BASE_URL,
         url,
         params
     })
     .then(res => res.data)
     .catch(err => ({
-        code: apiConf.ERR_NETWORK,
+        code: ERR_NETWORK,
         data: err
     }));
 };

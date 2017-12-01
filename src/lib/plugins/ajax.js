@@ -1,7 +1,48 @@
 import {httpRequest} from './http-request';
 import progressBar from './progress-bar';
-import apiConf from '../../conf/api.conf';
+import {
+    RETURN_OK,
+    ERROR_CODES_MAP,
+    RETURN_ERR_OTHER_MSG
+} from '../../conf/api.conf';
 import {toast} from './toast';
+import {log} from '../utils';
+
+/**
+ * api调取接口
+ * @param url
+ * @param params
+ * @param options
+ * @returns {Promise}
+ */
+export const ajax = async (url, params = {}, options = {}) => {
+    options = Object.assign({
+        needTk              : true,
+        openProgressBar     : false,
+        specialErrorCodesMap: []
+    }, options);
+    if (options.openProgressBar) progressBar.startProgress();
+    let res  = await httpRequest(url, params, options);
+    res.code = String(res.code);
+    if (res.code === RETURN_OK) {
+        if (options.openProgressBar) progressBar.finishProgress();
+        log(res);
+        return res;
+    }
+    else {
+        if (options.openProgressBar) progressBar.failProgress();
+        if (options.specialErrorCodesMap.length > 0) {
+            toastSpecialErrorMsg(res.code, options.specialErrorCodesMap);
+            log(res);
+            return res;
+        }
+        else {
+            log(res.code);
+            toastErrorMsg(res.code);
+            return res;
+        }
+    }
+};
 
 /**
  * 获取返回code的对应massage
@@ -12,7 +53,8 @@ import {toast} from './toast';
  */
 const getCodeMsg = (code, codesMap, defaultMsg = '') => {
     let codeItem = codesMap.find(item => item.code === String(code));
-    return codeItem !== undefined ? defaultMsg : codeItem.msg;
+    log(codeItem);
+    return codeItem === undefined ? defaultMsg : codeItem.msg;
 };
 
 /**
@@ -21,8 +63,10 @@ const getCodeMsg = (code, codesMap, defaultMsg = '') => {
  * @param errorCodesMap
  * @param defaultErrorMsg
  */
-const toastErrorMsg = (code, errorCodesMap = apiConf.ERROR_CODES_MAP, defaultErrorMsg = apiConf.RETURN_ERR_OTHER_MSG) => {
-    toast(getCodeMsg(code, errorCodesMap, defaultErrorMsg));
+const toastErrorMsg = (code, errorCodesMap = ERROR_CODES_MAP, defaultErrorMsg = RETURN_ERR_OTHER_MSG) => {
+    let codeMsg = getCodeMsg(code, errorCodesMap, defaultErrorMsg);
+    log(codeMsg);
+    toast(codeMsg);
 };
 
 /**
@@ -32,43 +76,11 @@ const toastErrorMsg = (code, errorCodesMap = apiConf.ERROR_CODES_MAP, defaultErr
  */
 const toastSpecialErrorMsg = (code, specialErrorCodesMap) => {
     let codeMsg = getCodeMsg(code, specialErrorCodesMap);
+    log(codeMsg);
     if (codeMsg !== '') {
         toast(codeMsg);
     }
     else {
         toastErrorMsg(code);
     }
-};
-
-/**
- * api调取接口
- * @param url
- * @param params
- * @param options
- * @returns {Promise}
- */
-export const ajax = async (url, params = {}, options = {
-    needTk              : true,
-    openProgressBar     : true,
-    specialErrorCodesMap: []
-}) => {
-    if (options.openProgressBar) progressBar.startProgress();
-    let res = await httpRequest(url, params, options);
-    return new Promise((resolve, reject) => {
-        if (String(res.code) === apiConf.RETURN_OK) {
-            if (options.openProgressBar) progressBar.finishProgress();
-            resolve(res.data);
-        }
-        else {
-            if (options.openProgressBar) progressBar.failProgress();
-            if (options.specialErrorCodesMap.length > 0) {
-                toastSpecialErrorMsg(res.code, options.specialErrorCodesMap);
-                reject(res);
-            }
-            else {
-                toastErrorMsg(res.code);
-            }
-        }
-    });
-
 };

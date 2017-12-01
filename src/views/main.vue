@@ -19,17 +19,17 @@
     export default {
         data() {
             return {
-                title: '我是各模块基础main组件',
+                title: '我是各模块基础main组件'
             };
         },
         mounted() {
         },
         computed: {
             ...mapState({
-                count: 'count',
+                count: 'count'
             }),
             ...mapGetters({
-                todosCount: 'todosCount',
+                todosCount: 'todosCount'
             })
         },
         methods : {
@@ -46,8 +46,8 @@
             }),
             ...mapActions({
                 addAsync     : dispatch => dispatch('incrementAsync').then(() => console.log('add async')), // 将 `this.add()` 映射为 `this.$store.commit('increment')`
-                addTodosAsync: 'addTodosAsync',
+                addTodosAsync: 'addTodosAsync'
             })
-        },
+        }
     };
 </script>

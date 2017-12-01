@@ -22,7 +22,7 @@ let modules = {
     },
     actions  : {},
     modules  : {
-        test: require('./modules/test/index').default
+        test: require('./test/index').default
     }
 };
 
