@@ -2,7 +2,6 @@ export default {
     /** 接口地址 **/
     BASE_URL: 'http://180.168.216.242:8071/api/1.0/',
     PICTURE_ADDRESS: 'http://180.168.216.242:8071/file/',
-
     /** 请求api返回配置 **/
     RETURN_OK: '1', //成功
     RETURN_ERR_OTHER_MSG: '服务器内部错误',

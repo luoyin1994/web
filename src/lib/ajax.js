@@ -2,10 +2,10 @@ import axios from 'axios';
 import apiConf from '../conf/api.conf';
 import api from './api';
 
-export default function ajax(url, params = {}, needTk = true) {
-    params.tk = needTk ? api.tk : undefined;
+export default function ajax(url, params = {}, options = {needTk: true}) {
+    params.tk = options.needTk ? api.tk : undefined;
     return axios({
-        method: 'post',
+        method : 'post',
         baseURL: apiConf.BASE_URL,
         url,
         params

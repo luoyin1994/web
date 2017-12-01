@@ -7,7 +7,10 @@ Vue.use(Vuex);
 let debug = process.env.NODE_ENV !== 'production';
 
 let modules = {
-    state    : {},
+    state    : {
+        configFile: null,
+        pageSize  : 10
+    },
     getter   : {},
     mutations: {},
     actions  : {},

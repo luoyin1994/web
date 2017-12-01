@@ -7,14 +7,14 @@ export default {
             {
                 id  : 1,
                 text: '...',
-                done: true,
+                done: true
             },
             {
                 id  : 2,
                 text: '...',
-                done: false,
-            },
-        ],
+                done: false
+            }
+        ]
     },
     getters   : {
         doneTodos     : state => {
@@ -28,7 +28,7 @@ export default {
         },
         getTodoById   : (state, getters) => id => {
             return state.todos.find(todo => todo.id === id);
-        },
+        }
     },
     mutations : {
         increment(state) {
@@ -39,7 +39,7 @@ export default {
         },
         logTodosCount(state) {
             console.log(state.todosCount);
-        },
+        }
     },
     actions   : {
         getTodoData() {
@@ -48,7 +48,7 @@ export default {
                     reject({
                         id  : 3,
                         text: '...',
-                        done: false,
+                        done: false
                     });
                 }, 1000);
             });
@@ -65,6 +65,6 @@ export default {
                     reject();
                 }, 1000);
             });
-        },
-    },
+        }
+    }
 };
