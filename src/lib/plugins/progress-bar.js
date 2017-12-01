@@ -1,6 +1,10 @@
 import Vue from 'vue';
 
-export default {
+/**
+ * 异步任务时的进度条
+ * @type {{progressStarted: boolean, startProgress: (function(*=)), finishProgress: (function()), failProgress: (function())}}
+ */
+const progressBar = {
     progressStarted: false,
     startProgress(time) {
         if (!this.progressStarted) {
@@ -20,3 +24,5 @@ export default {
         this.progressStarted = false;
     }
 };
+
+export default progressBar;

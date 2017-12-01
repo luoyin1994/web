@@ -10,18 +10,6 @@ export default new VueRouter({
             component: () => import(/*webpackChunkName: 'main.vue'*/'../views/main.vue'),
             children : [
                 {
-                    path     : 'foo',
-                    component: () => import(/*webpackChunkName: 'foo.vue'*/'../views/foo/foo.vue')
-                },
-                {
-                    path     : 'bar',
-                    component: () => import(/*webpackChunkName: 'bar.vue'*/'../views/bar/bar.vue')
-                },
-                {
-                    path     : 'bootstrap',
-                    component: () => import(/*webpackChunkName: 'bootstrap.vue'*/'../views/bootstrap/bootstrap.vue')
-                },
-                {
                     path     : 'test/test-filters',
                     component: () => import(/*webpackChunkName: 'test-filters.vue'*/'../views/test/test-filters.vue')
                 },

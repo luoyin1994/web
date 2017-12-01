@@ -42,11 +42,6 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
-    "bootstrap": "^4.0.0-beta.2",
-    "bootstrap-vue": "^1.2.0",
-    "jquery": "^3.2.1",
-    "lodash": "^4.17.4",
-    "node-notifier": "^5.1.2",
     "vue": "^2.5.3",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"

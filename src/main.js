@@ -10,7 +10,6 @@ import store from './store/store';
 import './lib/filters';
 
 // vue plugins
-// import './lib/plugins/bootstrap-vue';
 
 new Vue({
     el    : '#app',
