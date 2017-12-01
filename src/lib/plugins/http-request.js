@@ -1,8 +1,8 @@
 import axios from 'axios';
-import apiConf from '../conf/api.conf';
-import api from './api';
+import apiConf from '../../conf/api.conf';
+import api from './../api';
 
-export default function ajax(url, params = {}, options = {needTk: true}) {
+export const httpRequest = (url, params = {}, options = {needTk: true}) => {
     params.tk = options.needTk ? api.tk : undefined;
     return axios({
         method : 'post',
@@ -15,4 +15,4 @@ export default function ajax(url, params = {}, options = {needTk: true}) {
         code: apiConf.ERR_NETWORK,
         data: err
     }));
-}
+};

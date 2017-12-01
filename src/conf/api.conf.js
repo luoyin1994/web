@@ -11,7 +11,7 @@ export default {
     ERR_IMAGE_CODE_NOT_EXIST: '-12', // 图形验证码错误
     ERR_NETWORK: '-100',             // 网络错误
     // 通用error code
-    RETURN_ERROR_CODES: [
+    ERROR_CODES_MAP: [
         {code: '-1', msg:'版本号错误'}, //版本号错误
         {code: '-2', msg:'接口名称错误或非法'}, //接口名称错误或非法（字母数字中划线组合）
         {code: '-3', msg:'接口参数错误'}, //接口参数错误

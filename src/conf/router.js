@@ -22,20 +22,20 @@ export default new VueRouter({
                     component: () => import(/*webpackChunkName: 'bootstrap.vue'*/'../views/modules/bootstrap/bootstrap.vue')
                 },
                 {
-                    path     : 'test/testFilters',
-                    component: () => import(/*webpackChunkName: 'testFilters.vue'*/'../views/modules/test/testFilters.vue')
+                    path     : 'test/test-filters',
+                    component: () => import(/*webpackChunkName: 'test-filters.vue'*/'../views/modules/test/test-filters.vue')
                 },
                 {
-                    path     : 'test/testVuex',
-                    component: () => import(/*webpackChunkName: 'testVuex.vue'*/'../views/modules/test/testVuex.vue')
+                    path     : 'test/test-vuex',
+                    component: () => import(/*webpackChunkName: 'test-vuex.vue'*/'../views/modules/test/test-vuex.vue')
                 },
                 {
-                    path     : 'test/testApi',
-                    component: () => import(/*webpackChunkName: 'testApi.vue'*/'../views/modules/test/testApi.vue')
+                    path     : 'test/test-api',
+                    component: () => import(/*webpackChunkName: 'test-api.vue'*/'../views/modules/test/test-api.vue')
                 },
                 {
-                    path     : 'test/testApi2',
-                    component: () => import(/*webpackChunkName: 'testApi2.vue'*/'../views/modules/test/testApi2.vue')
+                    path     : 'test/test-api2',
+                    component: () => import(/*webpackChunkName: 'test-api2.vue'*/'../views/modules/test/test-api2.vue')
                 }
             ]
         }

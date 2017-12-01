@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-import App from './views/App.vue';
+import App from './views/app.vue';
 
 import router from './conf/router';
 
@@ -10,7 +10,7 @@ import store from './store/store';
 import './lib/filters';
 
 // vue plugins
-// import './lib/plugins/bootstrapVue';
+// import './lib/plugins/bootstrap-vue';
 
 new Vue({
     el    : '#app',

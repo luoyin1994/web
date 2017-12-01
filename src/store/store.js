@@ -12,7 +12,14 @@ let modules = {
         pageSize  : 10
     },
     getter   : {},
-    mutations: {},
+    mutations: {
+        setConfigFile(state, file) {
+            state.configFile = file;
+        },
+        setPageSize(state, size) {
+            state.pageSize = size;
+        }
+    },
     actions  : {},
     modules  : {
         test: require('./modules/test/index').default

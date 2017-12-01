@@ -5,8 +5,8 @@ export default {
     mutations : {},
     actions   : {},
     modules   : {
-        testApi : require('./testApi.store').default,
-        testApi2: require('./testApi2.store').default,
-        testVuex: require('./testVuex.store').default
+        testApi : require('./test-api.store').default,
+        testApi2: require('./test-api2.store').default,
+        testVuex: require('./test-vuex.store').default
     }
 };

@@ -1,5 +1,7 @@
 import appConf from '../conf/app.conf';
 
+
+
 /**
  * 错误打印提示
  * @param msg
@@ -110,11 +112,11 @@ function whetherValueTypeInTypesArray(checkedValue, typesArray) {
  * @param notEmptyDefaultTypesArray 默认不为空的类型数组
  * @returns {boolean}
  */
-function isEmpty(
+export const isEmpty = (
     checkedValue,
     isEmptyDefaultTypesArray  = ['null', 'undefined'],
     notEmptyDefaultTypesArray = ['function', 'date', 'boolean', 'number']
-) {
+) => {
     if (whetherValueTypeInTypesArray(checkedValue, isEmptyDefaultTypesArray)) {
         return true;
     }
@@ -138,5 +140,5 @@ function isEmpty(
     }
 
     return false;
-}
+};
 

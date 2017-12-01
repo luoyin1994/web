@@ -13,14 +13,14 @@
 <script>
     import {createNamespacedHelpers} from 'vuex';
 
-    const {mapState, mapGetters, mapMutations, mapActions} = createNamespacedHelpers('test/testApi2');
+    const {mapState, mapGetters, mapMutations, mapActions} = createNamespacedHelpers('test/test-api2');
 
     const {
               mapState    : testApiMapState,
               mapGetters  : testApiMapGetters,
               mapMutations: testApiMapMutations,
               mapActions  : testApiMpMutations
-          } = createNamespacedHelpers('test/testApi');
+          } = createNamespacedHelpers('test/test-api');
 
     export default {
         data() {
