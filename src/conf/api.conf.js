@@ -1,14 +1,11 @@
 /** 接口地址 **/
-export const BASE_URL                 = 'http://180.168.216.242:8071/api/1.0/';
-export const PICTURE_ADDRESS          = 'http://180.168.216.242:8071/file/';
+export const BASE_URL             = 'http://localhost:3000/';
+export const PICTURE_ADDRESS      = 'http://localhost:3000/pic';
 /** 请求api返回配置 **/
-export const RETURN_OK                = '1'; //成功
-export const RETURN_ERR_OTHER_MSG     = '服务器内部错误';
+export const RETURN_OK            = '1'; //成功
+export const RETURN_ERR_OTHER_MSG = '服务器内部错误';
 // 需特殊处理的error code
-export const ERR_WRONG_USERNAME_PWD   = '-9';    // 用户名密码错误 || 原密码错误
-export const ERR_USER_NOT_EXIST       = '-14';       // 用户不存在 || 系统中未存在您的手机号，请联系管理员修改您的密码
-export const ERR_IMAGE_CODE_NOT_EXIST = '-12'; // 图形验证码错误
-export const ERR_NETWORK              = '-100';             // 网络错误
+export const ERR_NETWORK          = '-100';             // 网络错误
 // 通用error code
 export const ERROR_CODES_MAP = [
     {code: '-1', msg: '版本号错误'}, //版本号错误
@@ -19,49 +16,5 @@ export const ERROR_CODES_MAP = [
     {code: '-6', msg: ''},
     {code: '-7', msg: ''},
     {code: '-8', msg: '没有权限'}, //用户没有权限
-    {code: '-9', msg: '用户名密码错误'},     //该用户密码错误
-    {code: '-10', msg: '会话过期，请重新登录'}, //用户没有登录
-    {code: '-11', msg: '短信发送失败'},   //短信发送失败
-    {code: '-12', msg: '图形验证码错误'},   //图形验证码错误
-    {code: '-13', msg: '短消息验证码错误'},   //短消息验证码错误
-    {code: '-14', msg: '用户不存在'},    //用户不存在
-    {code: '-15', msg: '事件不存在'},   //事件不存在
-    {code: '-16', msg: '错误的操作'},    //错误的操作
-    {code: '-17', msg: '积分类型不存在'},    //积分类型不存在
-    {code: '-18', msg: '违章类型不存在'},    //违章类型不存在
-    {code: '-19', msg: '参数不合法'},    //参数不合法
-    {code: '-20', msg: '设备类型不存在'},    //设备类型不存在
-    {code: '-21', msg: '设备使用不存在'},    //设备使用不存在
-    {code: '-22', msg: '短信验证码错误'}, //验证码错误
-    {code: '-23', msg: '手机号已经被绑定'}, //手机号已经被绑定
-    {code: '-24', msg: '设备领用已满'},    //设备领用已满
-    {code: '-25', msg: '设备已过期'},    //设备已过期
-    {code: '-26', msg: '设备已被领用'},    //设备已被领用
-    {code: '-27', msg: '设备不存在'},    //设备不存在
-    {code: '-28', msg: '时间不合法'},    //时间不合法
-    {code: '-29', msg: '设备已绑定标签'},    //设备已绑定标签
-    {code: '-30', msg: '违章记录不存在'},    //违章记录不存在
-    {code: '-31', msg: '定位标签不存在'},  //定位标签不存在
-    {code: '-32', msg: '标签已被绑定'},  //标签已被绑定
-    {code: '-33', msg: '该用户没有考试'},    //该用户没有考试
-    {code: '-34', msg: '该工种下没有用户'},   //该工种下没有用户
-    {code: '-35', msg: '没有该工种'},    //没有该工种
-    {code: '-36', msg: '标签已存在'},   //标签已存在
-    {code: '-37', msg: '设备未归还'}, //设备未归还
-    {code: '-38', msg: '工种下已经有用户'},   //工种下已经有用户
-    {code: '-39', msg: '该设备必须申请使用'},   //该设备必须申请使用
-    {code: '-40', msg: '安全教育文章不存在'},   //安全教育文章不存在
-    {code: '-41', msg: '用户不允许使用该设备'},   //用户不允许使用该设备
-    {code: '-42', msg: '用户名已经存在'},   //用户名已经存在
-    {code: '-43', msg: '通知消息已阅'},   //通知消息已阅
-    {code: '-44', msg: '缩略图创建失败'},   //缩略图创建失败
-    {code: '-45', msg: '任务不存在'},   //任务不存在
-    {code: '-46', msg: '该设备无法绑定移动标签'},   //该设备无法绑定移动标签
-    {code: '-47', msg: '系统工种无法删除'},   //系统工种无法删除
-    {code: '-48', msg: '任务已经完成'},    //任务已经完成
-    {code: '-49', msg: 'workflow_node_id不匹配'},    //workflow_node_id不匹配
-    {code: '-50', msg: '会跳节点错误'},    //会跳节点错误
-    {code: '-51', msg: '有设备绑定了该工种'},    //有设备绑定了该工种
-    {code: '-52', msg: '设备检测报告已过期'},   //设备检测报告已过期
     {code: '-100', msg: '网络错误'}
 ];

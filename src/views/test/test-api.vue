@@ -4,7 +4,7 @@
 </style>
 <template>
     <div>
-        <h1>拉取数据例子</h1>
+        <h1>拉取数据栗子</h1>
         <button @click="getTestApiData">点击拉取接口数据</button>
         <button @click="clearTestApiData">清掉数据</button>
         <p>{{JSON.stringify(education)}}</p>

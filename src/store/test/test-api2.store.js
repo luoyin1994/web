@@ -1,7 +1,7 @@
 export default {
     namespaced: true,
     state     : {
-        title: '兄弟组件信息沟通例子',
+        title: '兄弟组件信息沟通栗子',
         msg  : '我是massage'
     },
     getters   : {},
