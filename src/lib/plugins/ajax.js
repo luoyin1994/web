@@ -27,45 +27,48 @@ const toastErrorMsg = (code, errorCodesMap = apiConf.ERROR_CODES_MAP, defaultErr
 
 /**
  * 弹出错误信息（特殊情况）
+ * @param code
+ * @param specialErrorCodesMap
  */
-const toastSpecialErrorMsg = () => {
-    if (this.specialError.newMsg) {
-        WebUtil.toast(this.specialError.newMsg);
+const toastSpecialErrorMsg = (code, specialErrorCodesMap) => {
+    let codeMsg = getCodeMsg(code, specialErrorCodesMap);
+    if (codeMsg !== '') {
+        toast(codeMsg);
     }
     else {
-        let specialMsg = WebConstant.RETURN_ERROR_CODES.find(item => item.code == this.specialError.code).specialMsg;
-        if (specialMsg && typeof specialMsg === 'object' && !Array.isArray(specialMsg)) {
-            if (specialMsg[this.specialError.where]) {
-                WebUtil.toast(specialMsg[this.specialError.where]);
-            }
-            else {
-                console.error(new Error(`the "${this.specialError.where}" attribute of Object "specialMsg" is not exist!`));
-            }
-        }
-        else console.error(new Error('"specialMsg" should be an object!'));
+        toastErrorMsg(code);
     }
 };
 
+/**
+ * api调取接口
+ * @param url
+ * @param params
+ * @param options
+ * @returns {Promise}
+ */
 export const ajax = async (url, params = {}, options = {
-    needTk         : true,
-    openProgressBar: true,
-    specialCodes   : []
+    needTk              : true,
+    openProgressBar     : true,
+    specialErrorCodesMap: []
 }) => {
     if (options.openProgressBar) progressBar.startProgress();
     let res = await httpRequest(url, params, options);
-    if (String(res.code) === apiConf.RETURN_OK) {
-        if (options.openProgressBar) progressBar.finishProgress();
-        return res.data;
-    }
-    else {
-        if (options.openProgressBar) progressBar.failProgress();
-        if (options.specialCodes.length > 0) {
-            toastSpecialErrorMsg();
-            return res;
+    return new Promise((resolve, reject) => {
+        if (String(res.code) === apiConf.RETURN_OK) {
+            if (options.openProgressBar) progressBar.finishProgress();
+            resolve(res.data);
         }
         else {
-            toastErrorMsg(res.code);
+            if (options.openProgressBar) progressBar.failProgress();
+            if (options.specialErrorCodesMap.length > 0) {
+                toastSpecialErrorMsg(res.code, options.specialErrorCodesMap);
+                reject(res);
+            }
+            else {
+                toastErrorMsg(res.code);
+            }
         }
-    }
+    });
 
 };
